@@ -12,7 +12,7 @@ live_app.include_router(router)
 
 @live_app.get("/")
 def read_root():
-    return {"hello": "world"}
+    return {"cornrows": "blind giants"}
 
 
 @live_app.get("/form_test")
