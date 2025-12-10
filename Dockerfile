@@ -21,4 +21,4 @@ EXPOSE 8000
 
 ENV PATH="/venv/bin:$PATH"
 
-CMD ["gunicorn", "-k", "uvicorn.workers.UvicornWorker", "app.main:app", "--bind", "0.0.0.0:8000"]
+CMD ["gunicorn", "-k", "uvicorn.workers.UvicornWorker", "app.main:live_app", "--bind", "0.0.0.0:8000"]
