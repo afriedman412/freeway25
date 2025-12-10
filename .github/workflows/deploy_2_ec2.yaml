@@ -1,0 +1,34 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v3
+
+    - name: Copy files to EC2 and rebuild container
+      uses: appleboy/ssh-action@v1.0.0
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ec2-user
+        key: ${{ secrets.EC2_SSH_KEY }}
+        script: |
+          # Pull latest code
+          cd /home/ec2-user/app || git clone https://github.com/${{ github.repository }} /home/ec2-user/app
+          cd /home/ec2-user/app
+          git pull
+
+          # Rebuild container
+          sudo docker build -t myapp .
+          
+          # Stop old container
+          sudo docker rm -f myapp || true
+          
+          # Run new container on port 80 → container:8000
+          sudo docker run -d --name myapp -p 80:8000 myapp
