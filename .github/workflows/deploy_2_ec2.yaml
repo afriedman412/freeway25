@@ -31,4 +31,7 @@ jobs:
           sudo docker rm -f myapp || true
           
           # Run new container on port 80 → container:8000
-          sudo docker run -d --name myapp -p 80:8000 myapp
+          sudo docker run -d --name myapp \
+          -p 80:8000 \
+          -e PRO_PUBLICA_API_KEY="${{ secrets.PRO_PUBLICA_API_KEY }}" \
+          myapp
