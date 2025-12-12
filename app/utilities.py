@@ -19,3 +19,14 @@ def verify_r(r: requests.Response) -> int:
     assert r.json(), "bad response json"
     assert r.json()['results'], "no results loaded"
     return len(r.json()['results'])
+
+
+def load_data():
+    """
+    Gets donor, committee and candidate info from YAML file.
+
+    Probably better ways/places to store this, but this is fine for now.
+    """
+    with open("data.yaml") as f:
+        data = yaml.safe_load(f)
+    return data

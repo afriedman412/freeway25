@@ -1,0 +1,2 @@
+schedule_a = itemized receipts by committee (from FEC form 3X)
+independent expenditures = from Pro Publica by committee

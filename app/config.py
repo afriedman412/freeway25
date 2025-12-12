@@ -1,3 +1,13 @@
+from pathlib import Path
+
+# should be freeway25/
+ROOT_DIR = Path(__file__).resolve().parents[1]
+
+IE_TABLE_NAME = "independent_expenditures"
+SKED_A_TABLE_NAME = "schedule_a"
+
+POSTGRES_URL = "postgresql+psycopg2://localhost/postgres"
+
 GOV_BASE_URL = "https://api.open.fec.gov/v1/"
 DT_FORMAT = "%Y-%m-%d"
 CYCLE = "2024"
@@ -5,8 +15,6 @@ BASE_URL = f"https://api.propublica.org/campaign-finance/v1/{CYCLE}"
 RECURSIVE_SLEEP_TIME = 1
 RETRY_SLEEP_TIME = 3
 RETRIES = 5
-DT_FORMAT = "%Y-%m-%d"
-IE_TABLE = "fiu_pp"
 EMAIL_FROM = "afriedman412@gmail.com"
 EMAILS_TO = ["david@readsludge.com", "donny@readsludge.com"] + [EMAIL_FROM]
 
